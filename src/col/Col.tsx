@@ -21,13 +21,14 @@ export default defineComponent({
   },
 
   setup(props, { slots }) {
+    // 通过inject引入 (在Row通过provide注入的数据）
     const { parent, index } = useParent<RowProvide>(ROW_KEY);
 
     const style = computed(() => {
       if (!parent) {
         return;
       }
-
+      // spaces由Row组件计算得到
       const { spaces } = parent;
 
       if (spaces && spaces.value && spaces.value[index.value]) {

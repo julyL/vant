@@ -19,6 +19,7 @@ export function useClickAway(
 
   const onClick = (event: Event) => {
     const element = unref(target);
+    // 触发事件的target不包含在element中,则触发事件
     if (element && !element.contains(event.target as Node)) {
       listener(event);
     }
